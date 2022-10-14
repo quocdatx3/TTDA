@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Grap : MonoBehaviour
 {
+    public bool avtiveState;
     private void OnTriggerEnter2D(Collider2D other) {
-        gameObject.GetComponentInParent<HandGrap>().PullTrigger(other);
+        if (avtiveState){
+            gameObject.GetComponentInParent<HandGrap>().PullTrigger(other);
+        }
     }
 }

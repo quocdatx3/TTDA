@@ -1,75 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6991696632144491397
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 858906767175385930}
-  - component: {fileID: 8204341055144239860}
-  - component: {fileID: 4326466110079496758}
-  m_Layer: 0
-  m_Name: Moving Obj
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &858906767175385930
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991696632144491397}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8015219875171149367}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8204341055144239860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991696632144491397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc65391aedcd8ab41b9d11ab0009a0b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 8015219876030250476}
-  - {fileID: 8015219876998018486}
-  speed: 2
---- !u!114 &4326466110079496758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6991696632144491397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71dfe92316acf144c8bbcfe8a765dc1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Fruits:
-  - {fileID: 6008409027755449038, guid: f1424c061eced9e45ac736c890099da2, type: 3}
-  - {fileID: 3516715124255874412, guid: bccb50f0fc305344380b1d0a60e0de5e, type: 3}
-  - {fileID: 778713747246180035, guid: 26383604fd708de48a77b1c43add9fb4, type: 3}
-  - {fileID: 3922287044705331475, guid: ab9e151ac2684d74f87a2d0b8b360cbf, type: 3}
-  - {fileID: 767337985710152744, guid: 2c5ace9b61bb3ff43b85d35ac4ac7c55, type: 3}
-  - {fileID: 4476223693342895639, guid: 2d760eb84dec19a42a471a8a3e85f0ee, type: 3}
-  - {fileID: 8019049467072454340, guid: 5fd806a639f945b47821181224f6b948, type: 3}
-  - {fileID: 9206728521149237781, guid: 67ca2645a8b2ddc4280583e93585fb39, type: 3}
 --- !u!1 &8015219875171149352
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +31,6 @@ Transform:
   m_Children:
   - {fileID: 8015219876030250475}
   - {fileID: 8015219876998018485}
-  - {fileID: 858906767175385930}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -117,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dbf66221f529a4eb91bc51a0335abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObj: {fileID: 6991696632144491397}
+  movingObj: {fileID: 0}
   CDTime: 0
   minCDTime: 2
-  maxCDTime: 3
+  maxCDTime: 6
 --- !u!1 &8015219876030250476
 GameObject:
   m_ObjectHideFlags: 0

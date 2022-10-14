@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class WaypointsFolower : MonoBehaviour
 {
-    [SerializeField] private GameObject[] waypoints;
+    [SerializeField]private List<GameObject> waypointsList;
+
     private int currentWaypointIndex = 0;
 
     [SerializeField] private float speed = 2f;
 
-    private void Start() {
-        transform.position = waypoints[currentWaypointIndex].transform.position;
+    public void AddWaypoint(GameObject go) 
+    {
+        waypointsList.Add(go);
     }
 
     private void Update()
     {
-        if (waypoints.Length !=0){
-            if (Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
+        if (waypointsList.Count !=0){
+            transform.position = Vector2.MoveTowards(transform.position, waypointsList[currentWaypointIndex].transform.position, speed * Time.deltaTime);
+            if (Vector2.Distance(waypointsList[currentWaypointIndex].transform.position, transform.position) < .1f)
             {
                 currentWaypointIndex++;
-                if (currentWaypointIndex >= waypoints.Length)
+                if (currentWaypointIndex >= waypointsList.Count)
                 {
                     currentWaypointIndex = 0;
-                    Destroy(gameObject);
+                    waypointsList.Clear();
+                    if( transform.childCount > 0){
+                        GameObject go = this.gameObject.transform.GetChild(0).gameObject;
+                        go.SetActive(false);
+                        go.transform.SetParent(this.transform.parent.transform);
+                    }
+                    gameObject.SetActive(false);
                 }
             }
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, speed * Time.deltaTime);
+        }
+    }
+    private void OnEnable() {
+        if(waypointsList.Count > 0){
+            transform.position = waypointsList[currentWaypointIndex].transform.position;
         }
     }
 }

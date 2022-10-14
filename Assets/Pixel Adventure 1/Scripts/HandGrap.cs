@@ -6,6 +6,7 @@ public class HandGrap : MonoBehaviour
 {
     [SerializeField]private Vector3 mousePosition;
     [SerializeField]private GameObject hander;
+    [SerializeField]private GameObject poolingObj;
     [SerializeField]private Vector2 handerPos;
     [SerializeField]private float speed;
     enum GrapState
@@ -28,6 +29,7 @@ private void Start() {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+90f));
             CurrentState = GrapState.GRAP;
             handerPos = hander.transform.position;
+            hander.GetComponent<Grap>().avtiveState = true;
         }
     }
 
@@ -44,11 +46,15 @@ private void Start() {
     }
 
     private void PointCounting(){
-        Debug.Log("add Point!");
+        if( transform.childCount > 0){
+            Debug.Log("add Point!");
+            hander.transform.GetChild(0).gameObject.SetActive(false);
+            hander.transform.GetChild(0).SetParent(poolingObj.transform);
+        }
+
     }
 
     public void PullTrigger(Collider2D other) {
-        
         if (other.gameObject.CompareTag("Item"))
         {
             other.gameObject.transform.SetParent(hander.transform);
@@ -61,7 +67,10 @@ private void Start() {
             MouseClick();
         if (CurrentState == GrapState.GRAP)
             moveDown();
-        if (CurrentState == GrapState.RETURN)
+        if (CurrentState == GrapState.RETURN){
             moveUp();
+            hander.GetComponent<Grap>().avtiveState = false;
+        }
+            
     }
 }
