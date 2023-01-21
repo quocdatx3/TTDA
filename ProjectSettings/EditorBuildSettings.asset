@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Pixel Adventure 1/Scenes/PlayScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 688565432193b6447acdc9a5e656d959, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: d7681491ad290974e8528557b9785ef1, type: 2}
