@@ -23,6 +23,14 @@ MonoBehaviour:
     m_Key: Setting
     m_Metadata:
       m_Items: []
+  - m_Id: 16224509136867328
+    m_Key: Game Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16226588093976576
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
