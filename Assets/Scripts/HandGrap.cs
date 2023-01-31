@@ -10,8 +10,7 @@ public class HandGrap : MonoBehaviour
     [SerializeField] private Vector2 handerPos;
     [SerializeField] private float speed;
     [SerializeField] private bool getItem = false;
-
-    [SerializeField] private GameObject gameManager;
+    [SerializeField] private GameManager gm;
     enum GrapState
     {
         IDLE,
@@ -30,7 +29,7 @@ public class HandGrap : MonoBehaviour
         if (CurrentState == GrapState.IDLE)
         {
             Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-            Debug.Log(direction);
+
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90f));
             CurrentState = GrapState.GRAP;
@@ -60,7 +59,7 @@ public class HandGrap : MonoBehaviour
     private void PointCounting()
     {
         string fruitName = hander.transform.GetChild(0).GetComponent<Fruit>().getName();
-
+        gm.PointCaculating(fruitName);
 
         hander.transform.GetChild(0).gameObject.SetActive(false);
         hander.transform.GetChild(0).SetParent(poolingObj.transform);

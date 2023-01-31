@@ -10095,6 +10095,10 @@ PrefabInstance:
       value: Circle
       objectReference: {fileID: 0}
     - target: {fileID: 1567308425927072878, guid: 75760c80efea67e47abc1ae323c0a7ea, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 253663887}
+    - target: {fileID: 1567308425927072878, guid: 75760c80efea67e47abc1ae323c0a7ea, type: 3}
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}

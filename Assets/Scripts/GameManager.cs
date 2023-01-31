@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject endCanvas;
     [SerializeField] private int[] numbers = Enumerable.Repeat(100, 3).ToArray();
     [SerializeField] private string[] names = new string[3];
-    void Start(){
+    void Start()
+    {
         int i = 0;
         while (i < 3)
         {
@@ -24,14 +25,19 @@ public class GameManager : MonoBehaviour
             i++;
         }
 
-        target.text = "Bạn cần Thu thập: \n3 "+names[0]+", \n3 "+names[1]+", \n3 "+names[2];
+        target.text = "Bạn cần Thu thập: \n3 " + names[0] + ", \n3 " + names[1] + ", \n3 " + names[2];
         numbers = Enumerable.Repeat(0, 3).ToArray();
-        point.text =    names[0]+": "+numbers[0]+"/3\n"+
-                        names[1]+": "+numbers[1]+"/3\n"+
-                        names[2]+": "+numbers[2]+"/3\n";
+        DisplayPoints();
     }
 
-    private string GetFruitName(int v){
+    private void DisplayPoints(){
+        point.text = names[0] + ": " + numbers[0] + "/3\n" +
+                        names[1] + ": " + numbers[1] + "/3\n" +
+                        names[2] + ": " + numbers[2] + "/3\n";
+    }
+
+    private string GetFruitName(int v)
+    {
         switch (v)
         {
             case 0:
@@ -52,7 +58,8 @@ public class GameManager : MonoBehaviour
                 return "strawberry";
         }
     }
-    public int NewNumber(int r){
+    public int NewNumber(int r)
+    {
         int a = Random.Range(0, r);
         while (numbers.Contains(a))
         {
@@ -60,12 +67,39 @@ public class GameManager : MonoBehaviour
         }
         return a;
     }
-    public void ClickStart(){
+    public void ClickStart()
+    {
         startCanvas.SetActive(false);
         playCanvas.SetActive(true);
     }
-    public void endGame(){
+    public void endGame()
+    {
         playCanvas.SetActive(false);
         endCanvas.SetActive(true);
+    }
+    public void PointCaculating(string name)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (names[i] == name)
+            {
+                numbers[i]++;
+                DisplayPoints();
+                CheckWinning();
+            }
+        }
+    }
+
+    private void CheckWinning()
+    {
+        bool win = true;
+        for (int i = 0; i < 3; i++)
+        {
+            if (numbers[i] <3)
+            {
+                win = false;
+            }
+        }
+        if(win) endGame();
     }
 }
