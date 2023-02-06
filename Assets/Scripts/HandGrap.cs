@@ -11,6 +11,8 @@ public class HandGrap : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private bool getItem = false;
     [SerializeField] private GameManager gm;
+    [SerializeField] private AudioSource hit;
+    [SerializeField] private AudioSource eat;
     enum GrapState
     {
         IDLE,
@@ -64,6 +66,7 @@ public class HandGrap : MonoBehaviour
         hander.transform.GetChild(0).gameObject.SetActive(false);
         hander.transform.GetChild(0).SetParent(poolingObj.transform);
         getItem = false;
+        eat.Play();
     }
 
     public void PullTrigger(Collider2D other)
@@ -72,6 +75,7 @@ public class HandGrap : MonoBehaviour
         {
             other.gameObject.transform.SetParent(hander.transform);
             getItem= true;
+            hit.Play();
         }
         CurrentState = GrapState.RETURN;
     }

@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text target;
     [SerializeField] private TMP_Text point;
+    [SerializeField] private TMP_Text end;
     // Start is called before the first frame update
 
     [SerializeField] GameObject startCanvas;
@@ -30,7 +31,8 @@ public class GameManager : MonoBehaviour
         DisplayPoints();
     }
 
-    private void DisplayPoints(){
+    private void DisplayPoints()
+    {
         point.text = names[0] + ": " + numbers[0] + "/3\n" +
                         names[1] + ": " + numbers[1] + "/3\n" +
                         names[2] + ": " + numbers[2] + "/3\n";
@@ -72,11 +74,21 @@ public class GameManager : MonoBehaviour
         startCanvas.SetActive(false);
         playCanvas.SetActive(true);
     }
-    public void endGame()
+    public void EndGame()
     {
+        end.text = "You win!";
         playCanvas.SetActive(false);
         endCanvas.SetActive(true);
+        Invoke("backToMenu",5f);
     }
+    public void TimeOut()
+    {
+        end.text = "Timeout!";
+        playCanvas.SetActive(false);
+        endCanvas.SetActive(true);
+        Invoke("backToMenu",5f);
+    }
+
     public void PointCaculating(string name)
     {
         for (int i = 0; i < 3; i++)
@@ -93,13 +105,17 @@ public class GameManager : MonoBehaviour
     private void CheckWinning()
     {
         bool win = true;
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numbers.Length; i++)
         {
-            if (numbers[i] <3)
+            if (numbers[i] < 3)
             {
                 win = false;
             }
         }
-        if(win) endGame();
+        if (win) EndGame();
+    }
+
+    private void backToMenu(){
+        SceneManager.LoadScene("Menu");
     }
 }
